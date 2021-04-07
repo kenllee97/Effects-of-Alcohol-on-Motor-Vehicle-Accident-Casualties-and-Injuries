@@ -1,0 +1,38 @@
+---
+title: Examining the Effects of Alcohol on Automobile Collision Injuries and Fatalities
+  in the Toronto Area
+author: "Ken Lee"
+thanks: "Code and data are available at: https://github.com/kenllee97/Effects-of-Alcohol-on-Motor-Vehicle-Accident-Casualties-and-Injuries"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+abstract: "Drinking and driving is a major issue that claims an estimated 1,500 Canadian lives every year, and although less people are dying to car automobile accidents, Canada's proportion of deaths involving alcohol was at 34%. Hence, this research paper will explore the effects of alcohol on potential car accident injusies and fatalities. More specifically, it will observe the differences between treated groups (alcohol related accidents) and control groups (non-alcohol related accidents) through the use of propensity score matching to control for the many variables and account for potential biases. All things considered, the insights from this research will not just help us inform the public of the dangers of drunk driving, but also reduce the number of senseless deaths in the process by identifying the main causes and effects of driving under the influence."
+keywords: "Propensity Score Matching, Alcohol, Automobile, Driving, DUI, Collisions, Injuries, Fatalities"
+output:
+  bookdown::pdf_document2:
+    toc: true
+    toc_depth: 2
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+(tinytex.verbose = TRUE)
+
+# Load Libraries
+library(tidyverse)
+library(knitr)
+```
+
+\newpage
+
+# Introduction
+
+Drinking and driving is a major societal issue that has claimed thousands of lives. In the USA, 10,142 people died from drunk driving accidents alone, meaning one person was dying to this problem every 52 minutes. Here in Canada, around 1,500 people die every year due to drunk driving, and although motor vehicle crash deaths have been decreasing over the years, alcohol is still significantly linked to these deaths with a proportion of around 34%. After all, any death involved with this issue is a  senseless death, especially when it is not just the drunk drivers who are affected, but the innocent third-parties involved in these collisions. Hence, it is important to further understand the potential effects of alcohol on potential collision injuries and fatalities. After all, these findings would further help inform the general public about the dangers of drunk driving, in addition to informing policies and strategies that limit its injuries and fatalities.
+
+
+
+# Experimental Design
+
+# Data
+
+# Discussion
