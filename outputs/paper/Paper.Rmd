@@ -2,7 +2,7 @@
 title: Examining the Effects of Alcohol on Automobile Collision Injuries and Fatalities
   in the Toronto Area
 author: "Ken Lee"
-thanks: "Code and data are available at: https://github.com/kenllee97/Effects-of-Alcohol-on-Motor-Vehicle-Accident-Casualties-and-Injuries"
+thanks: "Code and data are available at: https://github.com/kenllee97/Examining-the-Effects-of-Alcohol-on-Motor-Vehicle-Accident-Casualties-and-Injuries"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 abstract: "Drinking and driving is a major issue that claims an estimated 1,500 Canadian lives every year, and although less people are dying to car automobile accidents, Canada's proportion of deaths involving alcohol was at 34%. Hence, this research paper will explore the effects of alcohol on potential car accident injusies and fatalities. More specifically, it will observe the differences between treated groups (alcohol related accidents) and control groups (non-alcohol related accidents) through the use of propensity score matching to control for the many variables and account for potential biases. All things considered, the insights from this research will not just help us inform the public of the dangers of drunk driving, but also reduce the number of senseless deaths in the process by identifying the main causes and effects of driving under the influence."
 keywords: "Propensity Score Matching, Alcohol, Automobile, Driving, DUI, Collisions, Injuries, Fatalities"
@@ -27,12 +27,16 @@ library(knitr)
 
 # Introduction
 
-Drinking and driving is a major societal issue that has claimed thousands of lives. In the USA, 10,142 people died from drunk driving accidents alone, meaning one person was dying to this problem every 52 minutes. Here in Canada, around 1,500 people die every year due to drunk driving, and although motor vehicle crash deaths have been decreasing over the years, alcohol is still significantly linked to these deaths with a proportion of around 34%. After all, any death involved with this issue is a  senseless death, especially when it is not just the drunk drivers who are affected, but the innocent third-parties involved in these collisions. Hence, it is important to further understand the potential effects of alcohol on potential collision injuries and fatalities. After all, these findings would further help inform the general public about the dangers of drunk driving, in addition to informing policies and strategies that limit its injuries and fatalities.
+Drinking and driving is a major societal issue that has claimed thousands of lives. In the USA, 10,142 people died from drunk driving accidents alone, meaning one person was dying to this problem every 52 minutes [@citeLit1]. Here in Canada, around 1,500 people die every year due to drunk driving, and although motor vehicle crash deaths have been decreasing over the years, alcohol is still significantly linked to these deaths with a proportion of around 34% [@citeLit2]. After all, any death involved with this issue is a  senseless death, especially when it is not just the drunk drivers who are affected, but the innocent third-parties involved in these collisions. Hence, it is important to further understand the potential effects of alcohol on collision injuries and fatalities. These findings would further help inform the general public about the dangers of drunk driving, in addition to informing policies and strategies that limit its injuries and fatalities.
 
+Therefore, this paper will examine the effects alcohol can have on the magnitude of a motor vehicle collision, observing whether the involved individuals were not injured, or had minimal, minor, major, or fatal injuries. Of course, this would also involve the 29 control variables, such as road conditions, vision, and street, which would need to be controlled.
 
+This paper will first focus on the experimental design involved. For instance, denoting the tools used and the feature engineering done, such as the regularization and normalization of features that do not meet the logistical regression assumptions involved in the propensity score matching. Most importantly, it will also denote how we will be using propensity score matching to compare the differences and control for the many distinct features in order to create internal and external validity on the findings. This will allow us to compare treatment and control groups with the same range of probability of driving under the influence of alcohol. This type of methodology would ultimately not just help control variables, but also reducing selection bias. This isolates variables like weather and location, allowing us to compare between groups whose difference (treatment) is the consumption of the alcohol. At last, upon conducting the comparisons, all the differences in effects will be aggregated and analyzed to understand the consequences of alcohol on the type of injury.
 
 # Experimental Design
 
 # Data
 
 # Discussion
+
+# References
