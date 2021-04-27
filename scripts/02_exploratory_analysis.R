@@ -112,7 +112,7 @@ final %>%
   kable_minimal()%>% 
   kable_material(c("striped", "hover"))
 
-# Date
+# Year
 temp <- final %>% 
   mutate(year = lubridate::year(final$DATE), 
          month = lubridate::month(final$DATE), 
@@ -131,6 +131,7 @@ temp %>%
   labs(title = "Year Collision Distribution") +
   theme(plot.title = element_text(hjust = 0.5))
 
+# Month
 temp %>%
   group_by(month) %>% 
   summarise(Frequency = n()) %>% 
@@ -142,6 +143,7 @@ temp %>%
   labs(title = "Month Collision Distribution") +
   theme(plot.title = element_text(hjust = 0.5))
 
+# Day
 temp %>%
   group_by(day) %>% 
   summarise(Frequency = n()) %>% 

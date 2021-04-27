@@ -1,0 +1,28 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Experimental Design}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Model Description Overview}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Data Cleaning}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Feature Selection}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Propensity Score Matching}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Data}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Data Biases}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Feature Exploration}{7}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Alcohol}{7}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Injury}{11}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Street 1}{11}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Street 2}{11}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Date (Year)}{11}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}Date (Month)}{11}{subsubsection.3.2.6}%
+\contentsline {subsubsection}{\numberline {3.2.7}Date (Day)}{12}{subsubsection.3.2.7}%
+\contentsline {subsubsection}{\numberline {3.2.8}Hour}{12}{subsubsection.3.2.8}%
+\contentsline {subsubsection}{\numberline {3.2.9}Age}{12}{subsubsection.3.2.9}%
+\contentsline {subsection}{\numberline {3.3}Results}{13}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Discussion}{14}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Main Findings}{14}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Limitations}{14}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Data Set Bias}{14}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Propensity Score Matching}{15}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}Future Work}{15}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}More Robust Data/Features for the Propensity Scores}{15}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Randomised Controlled Trials}{15}{subsubsection.4.3.2}%
+\contentsline {section}{References}{16}{section*.2}%

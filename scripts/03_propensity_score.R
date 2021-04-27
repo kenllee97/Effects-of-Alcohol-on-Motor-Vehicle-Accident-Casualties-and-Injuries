@@ -5,7 +5,7 @@
 # Contact: kenllee97@gmail.com
 # License: MIT
 # Pre-requisites: 
-# - Need to have downloaded the data in script 00, and cleaned the data in script 01.
+# - Need to have downloaded the data in script 00, cleaned the data in script 01, and feature selected in script 03.
 
 
 ### Workspace setup ###
@@ -13,6 +13,7 @@
 library(tidyverse)
 library(broom)
 library(arm)
+library(caret)
 
 
 # Load/Read in the final data with the right classes
@@ -25,11 +26,14 @@ final <- read.csv("inputs/data/final_data.csv", sep = ",", colClasses = c( HOUR 
 # Reconverting the dates into class date
 final$DATE <- as.Date(final$DATE)
 
-# Creating propensity weights
-propensity_score <- glm(ALCOHOL ~ DATE + HOUR + STREET1 + STREET2 + INVAGE,
-                        family = binomial,
-                        data = final,
-                        maxit = 100)
+# Training logistic regression model
+
+propensity_score <- train(ALCOHOL ~ DATE + HOUR + STREET1 + STREET2 + INVAGE,
+                          data = final,
+                          method = "glm",
+                          trControl = trainControl(method = "cv", number = 10,
+                                                   verboseIter = TRUE),
+                          family = binomial)
 
 # Saving propensity scores into inputs data folder
 write_rds(propensity_score, "inputs/models/propensity_score.rds")

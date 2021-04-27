@@ -1,10 +1,10 @@
 ---
-title: Examining the Effects of Alcohol on Automobile Collision Injuries and Fatalities
-  in the Toronto Area
+title: "Examining the Effects of Alcohol on Automobile Collision Injuries and Fatalities in the Toronto Area (2006 - 2019)"
+subtitle: "How Not Drinking and Driving Improves Your Chances of Coming out of a Collision Unharmed"
 author: "Ken Lee"
 thanks: "Code and data are available at: https://github.com/kenllee97/Examining-the-Effects-of-Alcohol-on-Motor-Vehicle-Accident-Casualties-and-Injuries"
 date: "`r format(Sys.time(), '%d %B %Y')`"
-abstract: "Drinking and driving is a major issue that claims an estimated 1,500 Canadian lives every year, and although fewer people are dying from car automobile accidents, Canada's proportion of deaths involving alcohol was at 34%. Hence, this research paper will explore the effects of alcohol on potential car accident injuries and fatalities. More specifically, it will observe the differences between treated groups (alcohol-related accidents) and control groups (non-alcohol-related accidents) through the use of propensity score matching to control for the many variables (street, age, date, and time) and account for potential biases. All things considered, the insights from this research will not just help us inform the public of the dangers of drunk driving, but also reduce the number of senseless deaths in the process."
+abstract: "Drinking and driving is a major issue that claims an estimated 1,500 Canadian lives every year, and although fewer people are dying from car automobile accidents, Canada's proportion of deaths involving alcohol was at 34%. Hence, this research paper will explore the effects of alcohol on potential car accident injuries and fatalities. More specifically, it will observe the differences between treated groups (alcohol-related accidents) and control groups (non-alcohol-related accidents) through the use of propensity score matching to control for the many variables (street, age, date, and time) and account for potential biases. All things considered, we will discover the value of not drinking while driving as it increases the chances of coming out of collisions unharmed, helping us inform the public of the dangers of drunk driving, and reduce the number of senseless deaths in the process."
 output:
   bookdown::pdf_document2:
     toc: true
@@ -57,13 +57,13 @@ final_processed <- readr::read_delim("final_processed_data.csv", delim = ","
 
 Drinking and driving is a major societal issue that has claimed thousands of lives. In the USA, 10,142 people died from drunk driving accidents alone, meaning one person was dying to this problem every 52 minutes [@citeLit1]. Here in Canada, around 1,500 people die every year due to drunk driving, and although motor vehicle crash deaths have been decreasing over the years, alcohol is still significantly linked to these deaths with a proportion of around 34% [@citeLit2]. After all, any death involved with this issue is a  senseless death, especially when it is not just the drunk drivers who are affected, but the innocent third parties involved in these collisions. Hence, it is important to further understand the potential effects of alcohol on collision injuries and fatalities. These findings would further help inform the general public about the dangers of drunk driving, in addition to informing policies and strategies that limit its injuries and fatalities.
 
-Therefore, this paper will examine the effects alcohol can have on the magnitude of a motor vehicle collision, observing whether the involved individuals were not injured, or had minimal, minor, major, or fatal injuries. The data set is provided by Open Data Toronto, giving us a glimpse of the DUI accidents in the city of Toronto. Of course, this would also involve the 29 control variables, such as road conditions, vision, and street, which would need to be controlled.
+Therefore, this paper will examine the effects alcohol can have on the injury type of individuals. The data set is provided by Open Data Toronto, giving us a glimpse of the DUI accidents in the city of Toronto. Of course, this would also involve the 29 control variables, such as road conditions, vision, and street, which would need to be controlled.
 
-This paper will first focus on the experimental design involved. For instance, denoting the tools used and the feature engineering done, such as the regularization and normalization of features that do not meet the logistical regression assumptions involved in the propensity score matching. Most importantly, it will also denote how we will be using propensity score matching and the logistic regression model to compare the differences and control for the many distinct features in order to create internal and external validity on the findings. This will allow us to compare treatment and control groups with the same range of probability of DUI. This type of methodology and model would ultimately not just help control variables (as it takes into account the other variables and attempts to group them together based on the final propensity score), but also reduce selection bias. This isolates variables like age and location, allowing us to compare between groups whose only difference (treatment) is the consumption of alcohol. At last, upon conducting the comparisons, all the differences in effects will be aggregated and analyzed to understand the consequences of alcohol on the type of injury.
+This paper will first focus on the experimental design involved. For instance, denoting the tools used and the feature engineering done, such as the regularization and normalization of features that do not meet the logistical regression assumptions involved in the propensity score matching. Most importantly, it will also denote how we will be using propensity score matching, leveraging the logistic regression model, to compare the differences and control for the many distinct features in order to create internal and external validity on the findings. This will allow us to compare treatment and control groups with the same range of probability of DUI. This type of methodology and model would ultimately not just help control variables (as it takes into account the other variables and attempts to group them together based on the final propensity score), but also reduce selection bias. This isolates variables like age and location, allowing us to compare between groups whose only difference (treatment) is the consumption of alcohol. At last, upon conducting the comparisons, all the differences in effects will be aggregated and analyzed to understand the consequences of alcohol on the type of injury. All in all, we will be learning about the value of not drinking and driving, as it increases the chances of not being harmed during a collision, while also discussing the limitations of this study and how we can improve on it.  
 
 # Experimental Design
 
-For this research paper, R [] and packages such as “Tidyverse” [] and “dplyr” [] were used to analyze and clean the data. Additionally, “knitr” [] was used to create this PDF, while “ggplot2” [] was used to visualize the data.
+For this research paper, R [@citeR] and packages such as "readr" [@read], “Tidyverse” [@tidy], “dplyr” [@dply], "lubridate" [@lubri], and "janitor" [@jan] were used to analyze and clean the data. Additionally, “knitr” [@citeKnitr] was used to create this PDF, while “ggplot2” [@citeGG] and "kableExtra" [@citeKableExtra] was used to visualize the data.
 
 ## Model Description Overview
 
@@ -81,9 +81,9 @@ All in all, upon cleaning the data set, another issue at hand was the mere size 
 
 ## Feature Selection
 
-One of the first steps when picking the right predictors for the logistic regression was through the use of literature reviews. For instance, research papers like the “Driving under the influence of alcohol: frequency, reasons, perceived risk, and punishment” [] concluded that some of the main reasons people consume alcohol before driving are because there were no other means of transportation and the fact that the drinking was associated with their meals. Based on this, we can deduct that features such as streets would have an impact on alcohol consumptions as it would denote the availability of alternative means of transportation as well as the location of restaurants and bars. Additionally, the hour would also play a role as individuals may have certain meals and drinks at a certain time, while some modes of transportations may not be available in the later hours of the day. Similar to the hours, dates would have similar effects as establishments and modes of transportation may not be available on certain dates, while some dates (and hours) may encourage more individuals to go out and drink. At last, due to the topic of alcohol, age may also play an immense role as it would determine their access to said alcohol, as well as their capabilities of going out for meals and drinks. 
+One of the first steps when picking the right predictors for the logistic regression was through the use of literature reviews. For instance, research papers like the “Driving under the influence of alcohol: frequency, reasons, perceived risk, and punishment” [@CiteLit3] concluded that some of the main reasons people consume alcohol before driving are because there were no other means of transportation and the fact that the drinking was associated with their meals. Based on this, we can deduct that features such as streets would have an impact on alcohol consumption as it would denote the availability of alternative means of transportation as well as the location of restaurants and bars. Additionally, the hour would also play a role as individuals may have certain meals and drinks at a certain time, while some modes of transportation may not be available in the later hours of the day. Similar to the hours, dates would have similar effects as establishments and modes of transportation may not be available on certain dates, while some dates (and hours) may encourage more individuals to go out and drink. At last, due to the topic of alcohol, age may also play an immense role as it would determine their access to said alcohol, as well as their capabilities of going out for meals and drinks. 
 
-In addition to literature review, a correlation matrix leveraging Cramer’s V coefficient for all the categorical variable combinations was used. This matrix was constructed with the help of AntoniosK [] using the “lsr” [] and “corrplot” [] packages. Cramer’s V coefficient was used because it allows us to analyze the correlation between categorical values. This would not just help us identify variables that are most correlated with whether the sample consumed alcohol, but would also help us understand the nature of the variables before being used for the logistic regression. After all, one of the only main assumptions of logistic regression is that the predictors are independent of each other. Hence, with this matrix, we would be able to pick the most significant features while also reducing the inclusion of confounding and mediator variables within the data set. 
+In addition to literature review, a correlation matrix leveraging Cramer’s V coefficient for all the categorical variable combinations was used. This matrix was constructed with the help of AntoniosK [@stack] using the “lsr” [@lsr] and “corrplot” [@corrplot2017] packages. Cramer’s V coefficient was used because it allows us to analyze the correlation between categorical values. This would not just help us identify variables that are most correlated with whether the sample consumed alcohol, but would also help us understand the nature of the variables before being used for the logistic regression. After all, one of the only main assumptions of logistic regression is that the predictors are independent of each other. Hence, with this matrix, we would be able to pick the most significant features while also reducing the inclusion of confounding and mediator variables within the data set. 
 
 ```{r fig1, fig.cap = "Feature Correlation Matrix Using Cramer's V Coefficient", echo = FALSE, warning = FALSE, message = FALSE, fig.width = 10, fig.height = 5}
 # For this to work, the exploratory analysis script needs to have been executed
@@ -99,27 +99,31 @@ res %>%
         axis.text.y = element_text(vjust = 0.3, hjust = 0.95)
 ```
 
-In figure 1, we can visualize said matrix where red signifies a strong correlation while the transparency denotes the lack of correlation. We can see in the matrix that Street 1 and Street 2 were significantly correlated with many of the other variables, meaning its inclusion in the logistic regression would also take into account the many other potential effects of other correlated variables not included. Additionally, they both also share some correlation with the consumption of alcohol, meaning they would be good predictors. More importantly, they did not correlate with each other. This finding also seems to be backed by the academic review, as the streets (location) would play a significant role in the availability of alternative means of transportation, as well as the available locations for individuals to have their meals and drinks. 
+In **Figure \@ref(fig:fig1)**, we can visualize said matrix where red signifies a strong correlation while the transparency denotes the lack of correlation. We can see in the matrix that Street 1 and Street 2 were significantly correlated with many of the other variables, meaning its inclusion in the logistic regression would also take into account the many other potential effects of other correlated variables not included. Additionally, they both also share some correlation with the consumption of alcohol, meaning they would be good predictors. More importantly, they did not correlate with each other. This finding also seems to be backed by the academic review, as the streets (location) would play a significant role in the availability of alternative means of transportation, as well as the available locations for individuals to have their meals and drinks. 
 
 ## Propensity Score Matching
 
-After considering the academic review as well as the correlation matrix, Date, Hour, Age, Street 1, and Street 2 were selected as the main predictors for the logistic regressions. The reason we have selected a logistic regression model to calculate the propensity score is that we are trying to determine the probability the treatment (alcohol) is involved, which is a dichotomous variable, meaning the sample can either have alcohol or not. Moreover, the logistic regression is easy to implement and can take into account categorical data (streets) and numerical data (dates, hour, age) without needing to consider the distribution of the features. 
+Because of the fact that we are using already observed data, there are many variables to take into account, and the potential of confounding variable biases, propensity score matching was used as one of our methods to compare the differences. This is because this ultimately allows us to reduce confounding biases while also accounting and controlling for many distinct values by identifying their weights and propensity score. Ultimately, it helps us generate a more valid comparison by identifying samples with similar probabilities of being treated.
+
+After considering the academic review as well as the correlation matrix, Date, Hour, Age, Street 1, and Street 2 were selected as the main predictors for the logistic regressions. The reason we have selected a logistic regression model to calculate the propensity score is that we are trying to determine the probability the treatment (alcohol) is involved, which is a dichotomous variable, meaning the sample can either have alcohol or not. Moreover, the logistic regression is easy to implement and can take into account categorical data (streets) and numerical data (dates, hour, age) without needing to consider the distribution of the features. In other words, the logistic regression is a great way to calculate the weights (odds ratio) of the many diverse features, allowing us to generate a probability of treatment through the use of the logistic sigmoid function. 
 
 Of course, this also has its own drawbacks like the fact that each variable needs to be independent of others (no multicollinearity). This makes it hard to pick the right variables as it is complicated to determine the correlation of so many distinct features. To add to this, there may also be other unknown confounding or mediator variables that are at play, which could affect the accuracy and precision of the logistic regression model. There are also the basic assumptions of linearity between dependent and independent variables which could harm the outcomes if said assumption is not met. Hence, although logistic regressions seem to be appropriate to estimate the probability that the samples consume alcohol before driving, there are concerns on whether the data meets its assumptions. For instance, there may be unknown variables at play, we may not have picked an adequate amount of features to create an accurate probability, or some features may not be linearly correlated with the dependent variable. 
 
-All in all the logistic regression model is the following: 
+The logistic regression model is the following: 
 
 
 $$
 log(\frac{p}{p - 1}) = \beta_0 + X_1\beta_1 +X_2\beta_2 + X_3\beta_3 + X_4\beta_4 + X_5\beta_5
 $$
-Where p denotes the probability of the event being treated (alcohol), $\beta_0$ represents the reference group, other numbered $\beta$'s represent the feature coefficients of Date, hour, Age, Street 1, and Street 2, while the numbered $X$'s represent the explanatory variables (values representing said features in the data set inputted to calculate the propensity score)
+Where p denotes the probability of the event being treated (alcohol), $\beta_0$ represents the reference group, other numbered $\beta$'s represent the feature coefficients of Date, hour, Age, Street 1, and Street 2, while the numbered $X$'s represent the explanatory variables (values representing said features in the data set inputted to calculate the propensity score). Additionally, k-fold cross validation using the "caret" [@caret] package (with 10 folds) will be performed to evaluate the accuracy of the model, helping us understand the validity of the propensity scores generated.
 
-Upon finding the weights of the predictors using the “broom” [] package, the logistic regression model was then used to calculate all the propensity scores of each of the individual samples. The package “arm” [] was then used to match the treated samples with control samples with the same score, allowing us to compare the differences in injuries.
+Upon finding the weights of the predictors using the “broom” [@broom] package, the logistic regression model was then used to calculate all the propensity scores of each of the individual samples. The package “arm” [@arm] was then used to match the treated samples with control samples with the same score, allowing us to compare the differences in injuries.
+
+\newpage
 
 # Data
 
-The data we are using for this report comes from the R package “opendatatoronto” []. This package helps us gather data sourced from Toronto’s Open Data Portal, the official source for data collected from Toronto’s divisions and agencies. The data set used was the “Motor Vehicle Collisions involving Killed or Seriously Injured Persons” [], published under the Open Government License by Toronto Police Services and was last updated August 18, 2020 (data set refreshes annually). Because these are police reports, one of the major strengths of this data set is the abundant and precise information it provides. This data ultimately includes all traffic collisions where individuals were killed, injured or neither from 2006 - 2019. It consists of a sample size of 16,093, with 56 features.
+The data we are using for this report comes from the R package “opendatatoronto” [@citeToronto]. This package helps us gather data sourced from Toronto’s Open Data Portal, the official source for data collected from Toronto’s divisions and agencies. The data set used was the “Motor Vehicle Collisions involving Killed or Seriously Injured Persons” [@citeData], published under the Open Government License by Toronto Police Services and was last updated August 18, 2020 (data set refreshes annually). Because these are police reports, one of the major strengths of this data set is the abundant and precise information it provides. This data ultimately includes all traffic collisions where individuals were killed, injured or neither from 2006 - 2019. It consists of a sample size of 16,093, with 56 features.
 
 ## Data Biases
 
@@ -138,9 +142,9 @@ Although it is not necessary to check the distribution of features for logistic 
 final$ALCOHOL %>% table() %>% 
   kbl(col.names = c("Alcohol", "Frequency"), align = "cccc",
     caption = "Alcohol Distribution") %>% 
-  kable_styling(latex_options = "hold_position") %>% 
   kable_minimal() %>% 
-  kable_material(c("striped", "hover"))
+  kable_material(c("striped", "hover")) %>% 
+  kable_styling(latex_options = "hold_position") # Holding the table in position
 ```
 
 ```{r fig2, fig.cap = "Injury Type Frequency", echo = FALSE, warning = FALSE, message = FALSE, fig.width = 9, fig.height = 4}
@@ -244,39 +248,41 @@ final %>%
 
 ### Alcohol
 
-From Table 1, we can see that the majority of the collisions did not involve alcohol, and only around 418 of them consumed alcohol. Hence, when conducting the propensity score matching, we should have 418 pairs, with a total sample of 836.
+From **Table \@ref(tab:table1)**, we can see that the majority of the collisions did not involve alcohol, and only around 418 of them consumed alcohol. Hence, when conducting the propensity score matching, we should have 418 pairs, with a total sample of 836.
 
 ### Injury
 
-From Figure 2, we can see that the majority of the injuries were either none or major, which goes to show the volatility of injury types when it comes to collisions. It is for this reason that people have to take car collisions seriously, as they can result in major injuries. 
+From **Figure \@ref(fig:fig2)**, we can see that the majority of the injuries were either none or major, which goes to show the volatility of injury types when it comes to collisions. It is for this reason that people have to take car collisions seriously, as they can result in major injuries. 
 
 ### Street 1
 
-From Table 2, we can see the top 10 streets 1 where collisions occurred. At the top, we have Yonge street, which makes sense, as it is the longest road in the world [], and hence its probability of having collisions in it is larger. Nevertheless, the collisions are largely dispersed across 1,140 unique streets. 
+From **Table \@ref(tab:table2)**, we can see the top 10 streets 1 where collisions occurred. At the top, we have Yonge street, which makes sense, as it is the longest road in the world [@road], and hence its probability of having collisions in it is larger. Nevertheless, the collisions are largely dispersed across 1,140 unique streets. 
 
 ### Street 2
 
-From Table 3, we can see the top 10 street 2 where collisions occurred. Like the previous feature, collisions were largely dispersed across 2,432 unique streets.
+From **Table \@ref(tab:table3)**, we can see the top 10 street 2 where collisions occurred. Like the previous feature, collisions were largely dispersed across 2,432 unique streets.
 
 ### Date (Year)
 
-From Figure 3, we can see the distribution of collisions across the years from 2006 to 2019. In fact, it also goes to support our previous research, which is the fact that car collisions have been decreasing over the years, as most of the collisions happen before 2013.
+From **Figure \@ref(fig:fig3)**, we can see the distribution of collisions across the years from 2006 to 2019. In fact, it also goes to support our previous research, which is the fact that car collisions have been decreasing over the years, as most of the collisions happen before 2013.
 
 ### Date (Month)
 
-From Figure 4, we can see the distribution of collisions across all the months. This graph shows that most of the collisions spike up during the latter half of the year. This insight makes sense as it is also supported by our academic review since the summer and winter months mean there may be more people going out for meals due to celebrations and holidays.
+From **Figure \@ref(fig:fig4)**, we can see the distribution of collisions across all the months. This graph shows that most of the collisions spike up during the latter half of the year. This insight makes sense as it is also supported by our academic review since the summer and winter months mean there may be more people going out for meals due to celebrations and holidays.
 
 ### Date (Day)
 
-From Figure 5, we can see the distribution of collisions across the days of the month. However, this graph is not as reliable as not all months have a 31st, which is why the 31st may be lower and the 1st has the highest frequency of collisions. All things considered, there seems to be some uniform distribution.
+From **Figure \@ref(fig:fig5)**, we can see the distribution of collisions across the days of the month. However, this graph is not as reliable as not all months have a 31st, which is why the 31st may be lower and the 1st has the highest frequency of collisions. All things considered, there seems to be some uniform distribution.
 
 ### Hour
 
-From Figure 6, we can see the distribution of collisions across the hours of the day. As expected, the collisions are happening later in the day/evening possibly due to the fact that individuals are going out for their dinner meals, which encourage them to consume alcohol. In other words, the distribution is negatively skewed with a mean of 13.44 and a median of 14.
+From **Figure \@ref(fig:fig6)**, we can see the distribution of collisions across the hours of the day. As expected, the collisions are happening later in the day/evening possibly due to the fact that individuals are going out for their dinner meals, which encourage them to consume alcohol. In other words, the distribution is negatively skewed with a mean of 13.44 and a median of 14.
 
 ### Age
 
-At last, Figure 7 shows us a normal distribution of the age of individuals involved in the collisions. This makes sense as it is the range of ages that are able to drive and go out for meals (as discussed in our academic review). All in all, it had a mean of 42.78 and a median of 42.
+At last, **Figure \@ref(fig:fig7)** shows us a normal distribution of the age of individuals involved in the collisions. This makes sense as it is the range of ages that are able to drive and go out for meals (as discussed in our academic review). All in all, it had a mean of 42.78 and a median of 42.
+
+\newpage
 
 ## Results
 
@@ -307,17 +313,53 @@ final_processed %>% group_by(ALCOHOL) %>%
   kbl(align = "cccc",
     caption = "Percentage Difference in Injuries Between Treated and Control Groups") %>% 
   kable_minimal() %>% 
-  kable_material(c("striped", "hover"))
+  kable_material(c("striped", "hover")) %>% 
+  kable_styling(latex_options = "hold_position") # Holding the table in position
 
 ```
 
+**Figure \@ref(fig:fig8)** display a grouped bar chart highlighting the comparing the distribution of injury types between the control group and the treated group. As it can be seen, the use of alcohol does not seem to have a heavy effect on fatal and major injuries, as they both have equal numbers in those categories. In fact, the control groups had slightly higher numbers for fatal and major injuries. 
+
+On the other hand, when observing the other side of the spectrum (minimal, minor, and none) the control groups actually performed better than the treated groups, as control groups had the most “none” injuries while less minimal and minor injuries than treated groups. This is quite interesting because although there wasn’t a clear observed difference in the fatal and major injuries, individuals who did not consume alcohol before driving were more likely to come out of collisions unharmed. **Table \@ref(tab:table4)** helps us further understand the differences by turning the distribution into a percentage of the 418 observed samples in each group. It highlights that although the proportion of fatal and major injuries were quite similar, the control group has a significantly higher proportion of samples that resulted in no injuries. In other words, the treated group had only 27.75% of its sample with no injury while the control group had 40.43%.
+
+Hence, although we may not be able to observe a significant or valid difference in collisions involving casualties or major injuries, we can still conclude to a certain extent that not drinking alcohol renders a higher chance of coming out of a collision unharmed. After all, if we were to address these results as harmed or not harmed, control groups (samples without alcohol) would undoubtedly have fewer harmed samples than treated groups (samples with alcohol). 
 
 # Discussion
 
+Upon selecting the predictors, training a logistic regression to predict alcohol presence, calculating the propensity scores of each individual sample, and matching controlled and uncontrolled groups with the same propensity scores, we were finally able to compare the distribution difference in injuries between the two groups. 
+
 ## Main Findings
+
+As seen from the results, we can deduce from this experiment that alcohol may not have a significant effect with regards to fatalities and major injuries. After all, there was not much of a difference in these injuries between the control and treated groups. Nevertheless, this unforeseen result could be attributed to foreign unknown factors or even features that were not included in the logistic regression and hence not taken into account when conducting the propensity scores. It could ultimately mean that certain features were not controlled properly. For instance, there may be factors such as the speed of the vehicle or the use of a seatbelt that could have been taken into account and hence, potentially render a more valid and understandable causal result. All in all, this is a major weakness of this paper which will be further explored in the following limitations section. 
+
+Nonetheless, we were still able to derive some key findings. For instance, although we can’t say much regarding specific outcomes like fatalities and major injuries, we can identify a significant difference in the “None” injury (unharmed) aspect. After all, control groups had a significantly larger number of samples that ended up unharmed compared to the treated groups, allowing us to infer that not consuming alcohol can play a major role in coming out of a collision unharmed. 
 
 ## Limitations
 
+### Data Set Bias
+
+As mentioned in the data section, one of the limitations is the bias that inherently exists in the data set, since we are just using the data collected by a third party instead of conducting our own randomized experiments. After all, the data comes with offset locations, potentially altering the actual streets and neighborhoods in which these collisions occurred. Nevertheless, when it comes to the data set bias, the most significant limitation is the fact that it only consists of reported collision incidents. In other words, there is a possibility that accidents involving alcohol may not be reported as the individuals may be afraid of the legal consequences it comes with. Additionally, there may also be accidents where collisions were not significantly harmful or costly to merit a report. Hence, there is a chance that the data set we are analyzing does not accurately represent the population we are researching. 
+
+At last, there is also a possibility that the data present is inaccurate due to the circumstances in which they were recorded. For instance, features such as lighting and road conditions may be hard to take into account, as said factors could have changed between the time of the collision and the time the police arrive to report on it. Additionally, another limitation tied to the data set would be the fact that it may not consist of all the possible features needed to control for an experiment. For instance, it does not include the experience of the driver or even the speed of the vehicle during a collision, which are potential confounder and mediator variables that can contribute to the magnitude of the collision injuries. 
+
+### Propensity Score Matching
+
+One of the major limitations of propensity score matching is that it cannot match on unobserved variables. For example, as mentioned before, it would have been nice to have the speed and driving experience of the collisions, but because they were not available, the propensity score matching method was not able to take these variables into account. This not only limits the propensity score matching’s capabilities in eliminating biases but also prevents us from exerting more robust control variables. This can also be connected to another aspect of this experiment’s limitations, which is the fact that not enough features were taken into account for the propensity score (logistic regression) calculations, resulting in very similar scores across the board, reducing the result’s validity. For instance, the AOC obtained was at 0.63, meaning the logistic regression model was not effective in predicting alcohol presence. This ultimately limits the validity of the calculated propensity scores and hence the causal comparison. 
+
+All in all, another limitation inherent in the use of propensity score matching is the fact that we are statistically using the twice, which ignites some concern regarding the purity of the analysis, as there is a potential for data contamination. 
+
 ## Future Work
+
+Hence, upon seeing the many limitations that go to explain the unexpected results, we have gathered some ideas on how to improve on our experimentation for future research.
+
+### More Robust Data/Features for the Propensity Scores
+
+One of the methods of improving the results and validity of this experiment is by obtaining a more robust data set that includes more variables such as the speed of the car or the experience of the driver. This would allow us to look into more potential features/predictors, and be able to control for them. Additionally, the use of a more robust logistic regression model would also be quite helpful. This means including significantly more features in the prediction model (of course, making sure they are all independent of each other). After all, the AOC was at 0.63, which is quite close to the 0.5 thresholds. Hence, including more variables would help improve the predictive capabilities of the model, and hence maintaining better control over variables by obtaining a more diverse set of probabilities. This improvement would generate better matches that result in more valid causal insights (differences). 
+
+### Randomised Controlled Trials
+
+At last, seeing the innate limitations that propensity score matching has, especially when it comes to unobserved variables, one way to improve on this experiment would be to actually conduct randomized experiments. Of course, this would not just be costly, but also potentially unethical if not performed with adequate safety conditions. However, under the right safety conditions and controlled trials, randomized experiments would help bring more accurate results. For example, many factors such as light and weather conditions could be controlled, avoiding the potential effect of foreign features and leading to a more valid causal insight. More importantly, we would be able to randomly assign the treatment, consumption of alcohol, and hence eliminate selection bias while allowing for a valid and direct comparison between groups. 
+
+\newpage
 
 # References
