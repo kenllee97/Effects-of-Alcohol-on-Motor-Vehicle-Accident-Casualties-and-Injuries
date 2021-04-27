@@ -83,6 +83,28 @@ f <- sapply(cleaned_data, class) != 'Date'
 # Turning all "Yes" to 1
 cleaned_data[f][cleaned_data[f] == 'Yes'] <- '1'
 
+# Turning Age bins into Ratio data
+cleaned_data$INVAGE[cleaned_data$INVAGE == "0 to 4"] <- 2
+cleaned_data$INVAGE[cleaned_data$INVAGE == "5 to 9"] <- 7
+cleaned_data$INVAGE[cleaned_data$INVAGE == "10 to 14"] <- 12
+cleaned_data$INVAGE[cleaned_data$INVAGE == "15 to 19"] <- 17
+cleaned_data$INVAGE[cleaned_data$INVAGE == "20 to 24"] <- 22
+cleaned_data$INVAGE[cleaned_data$INVAGE == "25 to 29"] <- 27
+cleaned_data$INVAGE[cleaned_data$INVAGE == "30 to 34"] <- 32
+cleaned_data$INVAGE[cleaned_data$INVAGE == "35 to 39"] <- 37
+cleaned_data$INVAGE[cleaned_data$INVAGE == "40 to 44"] <- 42
+cleaned_data$INVAGE[cleaned_data$INVAGE == "45 to 49"] <- 47
+cleaned_data$INVAGE[cleaned_data$INVAGE == "50 to 54"] <- 52
+cleaned_data$INVAGE[cleaned_data$INVAGE == "55 to 59"] <- 57
+cleaned_data$INVAGE[cleaned_data$INVAGE == "60 to 64"] <- 62
+cleaned_data$INVAGE[cleaned_data$INVAGE == "65 to 69"] <- 67
+cleaned_data$INVAGE[cleaned_data$INVAGE == "70 to 74"] <- 72
+cleaned_data$INVAGE[cleaned_data$INVAGE == "75 to 79"] <- 77
+cleaned_data$INVAGE[cleaned_data$INVAGE == "80 to 84"] <- 82
+cleaned_data$INVAGE[cleaned_data$INVAGE == "85 to 89"] <- 87
+cleaned_data$INVAGE[cleaned_data$INVAGE == "90 to 94"] <- 92
+cleaned_data$INVAGE[cleaned_data$INVAGE == "Over 95"] <- 97
+
 ### Save Cleaned Data ###
 
 # Saving cleaned data into inputs data folder
@@ -91,3 +113,5 @@ write_delim(cleaned_data, "inputs/data/cleaned_data.csv", na = "NA", delim = ","
 # Saving cleaned data into paper folder
 write_delim(cleaned_data, "outputs/paper/cleaned_data.csv", 
             na = "NA", delim = ",")
+
+
