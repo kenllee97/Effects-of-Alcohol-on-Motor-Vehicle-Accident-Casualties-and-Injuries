@@ -10,15 +10,17 @@
 library(opendatatoronto)
 library(tidyverse)
 
+
+
 ###Get Data###
 raw_data <- 
   opendatatoronto::search_packages("Motor Vehicle Collisions") %>% 
   opendatatoronto::list_package_resources() %>% 
-  filter(title == "Motor Vehicle Collisions involving Killed or Seriously Injured Persons") %>% # This is the row we are interested in.
+  filter(name == "Motor Vehicle Collisions with KSI Data") %>% # This is the row we are interested in.
   select(id) %>% 
   opendatatoronto::get_resource()
 
 ### Save Data ### 
 # I have decided to use write_delim because using write_csv ends up creating
 # a duplicate column of id when I read/load it back in later.
-write_delim(raw_data, "Motor_Vehicle_Collisions_with_KSI_Data.csv", na = "NA", delim = ",")
+write_delim(raw_data, "inputs/data/Motor_Vehicle_Collisions_with_KSI_Data.csv", na = "NA", delim = ",")

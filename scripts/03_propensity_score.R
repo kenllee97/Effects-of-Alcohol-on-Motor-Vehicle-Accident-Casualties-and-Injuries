@@ -41,10 +41,10 @@ write_rds(propensity_score, "inputs/models/propensity_score.rds")
 # Loading model
 propensity_score <- read_rds("inputs/models/propensity_score.rds")
 
-collision_data <-
-  augment(propensity_score,
-          data = final,
-          type.predict = "response") %>% 
+collision_data <- 
+  augment(propensity_score, 
+                          data = final,
+                          type.predict = "response") %>% 
   dplyr::select(-.resid, -.std.resid, -.hat, -.sigma, -.cooksd)
 
 # Saving collision data with scores into inputs data folder
@@ -53,6 +53,9 @@ write_delim(collision_data, "inputs/data/final_collision_data_scores.csv", na = 
 # Saving data with collision scores into paper folder
 write_delim(collision_data, "outputs/paper/final_collision_data_scores.csv", 
             na = "NA", delim = ",")
+
+# Load Collision data
+collision_data <- read.csv("inputs/data/final_collision_data_scores.csv")
 
 # Arranging scores and alcohol data
 collision_data <- 
